@@ -237,12 +237,33 @@ public class Date {
 		return season;
 	}
 
-	public String monthLeft(){
+	public String monthsLeft(){
 		StringBuilder months = new StringBuilder();
-		for (int i=this.month;i<=12;i++){
+		int reset=0;
+		for (int i=this.month;i<=11;i++){
+			reset++;
 			this.month = this.month+1;
 			months.append(this.getMonthName()).append(" ");
 		}
+		this.month=this.month-reset;
 		return months.toString();
+	}
+
+	public String printDate(){
+		String date="";
+		date = "5/4/2018";
+		return date;
+	}
+
+	public String datesLeft(){
+		StringBuilder dates = new StringBuilder();
+		int reset=0;
+		for (int i=this.day;i<=30;i++){
+			reset++;
+			this.day = this.day+1;
+			dates.append(this.day + "/" + this.month + "/" + this.year).append(" ");
+		}
+		this.day=this.day-reset;
+		return dates.toString();
 	}
 }
