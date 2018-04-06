@@ -206,30 +206,22 @@ public class Date {
 		String season="";
 		switch (this.month){
 			case 1:
-				season= "Winter";
 			case 2:
-				season= "Winter";
 			case 3:
 				season= "Winter";
 			break;
 			case 4:
-				season= "Spring";
 			case 5:
-				season= "Spring";
 			case 6:
 				season= "Spring";
 			break;
 			case 7:
-				season= "Summer";
 			case 8:
-				season= "Summer";
 			case 9:
 				season= "Summer";
 			break;
 			case 10:
-				season= "Autumn";
 			case 11:
-				season= "Autumn";
 			case 12:
 				season= "Autumn";
 			break;
@@ -240,7 +232,7 @@ public class Date {
 	public String monthsLeft(){
 		StringBuilder months = new StringBuilder();
 		int reset=0;
-		for (int i=this.month;i<=11;i++){
+		for (int i=this.month;i<12;i++){
 			reset++;
 			this.month = this.month+1;
 			months.append(this.getMonthName()).append(" ");
@@ -258,12 +250,70 @@ public class Date {
 	public String datesLeft(){
 		StringBuilder dates = new StringBuilder();
 		int reset=0;
-		for (int i=this.day;i<=30;i++){
+		for (int i=this.day;i<this.daysInMonth();i++){
 			reset++;
 			this.day = this.day+1;
 			dates.append(this.day + "/" + this.month + "/" + this.year).append(" ");
 		}
 		this.day=this.day-reset;
 		return dates.toString();
+	}
+
+	public int daysInMonth(){
+		int days=0;
+		switch (this.month){
+			case 1:
+			case 3:
+			case 5:
+			case 7:
+			case 8:
+			case 10:
+			case 12:
+				days=31;
+			break;
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+				days=30;
+			break;
+			case 2:
+				days=28;
+			break;
+		}
+		return days;
+	}
+	public String monthsWithSameDays(){
+		StringBuilder months = new StringBuilder();
+		int filtro=0, reset=0;
+		reset=this.month;
+		filtro=this.daysInMonth();
+		this.month=0;
+		for (int i=this.month;i<12;i++){
+			this.month = this.month+1;
+			if (this.daysInMonth()==filtro){
+				months.append(this.getMonthName()).append(" ");
+			}
+		}
+		this.month=reset;
+		return months.toString();
+	}
+
+	public int daysSinceNewYear(){
+		int days=0, dreset=0, mreset=0;
+		for (int i=this.month;i>0;i--){
+			for (int j=this.day;j>0;j--){
+				dreset++;
+				this.day = this.day-1;
+				days=days+1;
+			}
+			mreset++;
+			this.month = this.month-1;
+			this.day=this.daysInMonth();
+		}
+		days=days-1;
+		this.day=this.day-dreset;
+		this.month=this.month-mreset;
+		return days;
 	}
 }

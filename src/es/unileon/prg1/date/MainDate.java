@@ -4,8 +4,8 @@ public class MainDate {
 
 	public static void main(String[] args) {
 		Date today, tomorrow;
-		today = new Date(5, 4, 2018);
-		tomorrow = new Date(6, 4, 2018);
+		today = new Date(6, 4, 2018);
+		tomorrow = new Date(7, 4, 2018);
 		System.out.println(today + " isSameYear " + tomorrow + "? " + today.isSameYear(tomorrow));
 		System.out.println(today + " isSameMonth " + tomorrow + "? " + today.isSameMonth(tomorrow));
 		System.out.println(today + " isSameDay " + tomorrow + "? " + today.isSameDay(tomorrow));
@@ -16,6 +16,8 @@ public class MainDate {
 		System.out.println("This months left untill year's end: " + today.monthsLeft());
 		System.out.println(today.printDate() + " is a date");
 		System.out.println("Dates remaining until the end of the month: " + today.datesLeft());
+		System.out.println("Months with the same days as this month: " + today.monthsWithSameDays());
+		System.out.println("Days since the start of the year: " + today.daysSinceNewYear());
 	}
 
 }
