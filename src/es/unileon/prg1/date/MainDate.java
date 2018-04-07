@@ -18,6 +18,9 @@ public class MainDate {
 		System.out.println("Dates remaining until the end of the month: " + today.datesLeft());
 		System.out.println("Months with the same days as this month: " + today.monthsWithSameDays());
 		System.out.println("Days since the start of the year: " + today.daysSinceNewYear());
+		System.out.println("Number of attemps to generate tomorrows's date randomly: " + tomorrow.randomAttemps1());
+		System.out.println("Number of attemps to generate tomorrows's date randomly: " + tomorrow.randomAttemps2());
+		System.out.println("Name of tomorrows's day of the week: " + tomorrow.nameOfTodaysDay());
 	}
 
 }

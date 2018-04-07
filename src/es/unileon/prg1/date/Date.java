@@ -316,4 +316,63 @@ public class Date {
 		this.month=this.month-mreset;
 		return days;
 	}
+
+	public int randomAttemps1(){
+		int attemps=0, day=0, month=0;
+		while (day!=this.day || month!=this.month){
+			day=(int)(Math.random()*31);
+			month=(int)(Math.random()*12);
+			attemps++;
+		}
+		return attemps;
+	}
+
+	public int randomAttemps2(){
+		int attemps=0, day=0, month=0;
+		do {
+			day=(int)(Math.random()*31);
+			month=(int)(Math.random()*12);
+			attemps++;
+		}
+		while (day!=this.day || month!=this.month);
+		return attemps;
+	}
+
+	public String nameOfDay(int i){
+		String name="";
+		switch (i){
+			case 0:
+				name="Monday";
+			break;
+			case 1:
+				name="Tuesday";
+			break;
+			case 2:
+				name="Wednesday";
+			break;
+			case 3:
+				name="Thursday";
+			break;
+			case 4:
+				name="Friday";
+			break;
+			case 5:
+				name="Saturday";
+			break;
+			case 6:
+				name="Sunday";
+			break;
+			
+		}
+		return name;
+	}
+
+	public String nameOfTodaysDay(){
+		int days=0, i=0;
+		String name="";
+		days=this.daysSinceNewYear();
+		i=days%7;
+		name=this.nameOfDay(i);
+		return name;
+	}
 }
